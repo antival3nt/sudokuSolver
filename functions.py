@@ -57,9 +57,12 @@ def solve_sudoku(puzzle):
         if is_valid(puzzle, guess, row, col):
             puzzle[row][col] = guess
             # recurse using this puzzle
-            # step 4 recursively call solve_sudoku
+            # step 4: recursively call solve_sudoku
             if solve_sudoku(puzzle):
                 return True
-                
-            # step 2.2: if the guess is invalid, backtrack and try another guess
-            puzzle[row][col] = -1
+
+        # step 5: if the guess is invalid, backtrack and try another guess
+        puzzle[row][col] = -1 # reset guess
+    
+    # step 6: if we reach this point, we've tried all possible guesses and none of them worked
+    return False
